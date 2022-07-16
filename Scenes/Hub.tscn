@@ -673,7 +673,7 @@ tile_data = PoolIntArray( -17, -1073741821, 0, -16, -1073741821, 0, -15, -107374
 [node name="Dice" parent="." instance=ExtResource( 29 )]
 position = Vector2( 928, 352 )
 
-[node name="DiceDoor" parent="." instance=ExtResource( 30 )]
+[node name="DiceDoor1" parent="." instance=ExtResource( 30 )]
 position = Vector2( -64, 480 )
 level_number = 1
 

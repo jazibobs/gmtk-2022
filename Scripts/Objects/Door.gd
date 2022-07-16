@@ -11,5 +11,6 @@ func _ready():
 func _process(_delta):
 	if is_open:
 		$Doorway.frame = 1
+		$DiceLabel.modulate.a = 255
 	else:
 		$Doorway.frame = 0
