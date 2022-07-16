@@ -178,9 +178,11 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
 frames = SubResource( 26 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
+offset = Vector2( 0, 10 )
 current = true
 smoothing_enabled = true
 offset_v = -1.0
