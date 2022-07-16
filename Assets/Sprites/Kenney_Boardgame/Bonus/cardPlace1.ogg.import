@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/cardPlace1.ogg-da2ed190cbe3973d3924db9b01847ab2.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sprites/Kenney_Boardgame/Bonus/cardPlace1.ogg"
+dest_files=[ "res://.import/cardPlace1.ogg-da2ed190cbe3973d3924db9b01847ab2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

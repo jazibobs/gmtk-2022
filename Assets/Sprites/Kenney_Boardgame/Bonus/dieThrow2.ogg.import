@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/dieThrow2.ogg-b499d948ce83656102b33b30066866bf.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sprites/Kenney_Boardgame/Bonus/dieThrow2.ogg"
+dest_files=[ "res://.import/dieThrow2.ogg-b499d948ce83656102b33b30066866bf.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

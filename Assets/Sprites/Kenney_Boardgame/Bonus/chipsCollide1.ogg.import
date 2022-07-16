@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/chipsCollide1.ogg-9f7c255fb2a6b2077a942403068f0769.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sprites/Kenney_Boardgame/Bonus/chipsCollide1.ogg"
+dest_files=[ "res://.import/chipsCollide1.ogg-9f7c255fb2a6b2077a942403068f0769.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

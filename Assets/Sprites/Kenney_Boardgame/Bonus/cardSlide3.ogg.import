@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/cardSlide3.ogg-a6e581666d2535ef69e1748e1827a196.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sprites/Kenney_Boardgame/Bonus/cardSlide3.ogg"
+dest_files=[ "res://.import/cardSlide3.ogg-a6e581666d2535ef69e1748e1827a196.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
