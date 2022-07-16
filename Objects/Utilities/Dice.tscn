@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Sprites/Kenney_Boardgame/Spritesheets/diceWhite.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Objects/Dice.gd" type="Script" id=2]
@@ -38,6 +38,10 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 32, 32 )
 
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 31.0
+height = 22.0
+
 [node name="Dice" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -49,8 +53,15 @@ frames = SubResource( 7 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource( 8 )
 
+[node name="Area2D" type="Area2D" parent="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D"]
+position = Vector2( 0, 3 )
+shape = SubResource( 9 )
+
 [node name="DiceTicker" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
 
+[connection signal="body_entered" from="StaticBody2D/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="DiceTicker" to="." method="_on_DiceTicker_timeout"]
