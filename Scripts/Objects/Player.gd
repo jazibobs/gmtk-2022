@@ -17,6 +17,7 @@ var facing_right = true
 var health = 3
 var decay_rate = 0.2
 var is_swimming = false
+var is_dead = false
 	
 func _physics_process(_delta):
 	
@@ -27,7 +28,7 @@ func _physics_process(_delta):
 	
 	
 	
-	if is_swimming:
+	if is_swimming and !is_dead:
 		$KinematicBody2D/AnimatedSprite.play("swimming")
 		
 		motion.y += SWIM_GRAVITY
@@ -46,8 +47,10 @@ func _physics_process(_delta):
 		
 		if Input.is_action_pressed("jump"):
 				motion.y = -SWIMFORCE
-	else:
-		
+				$JumpingSound.play()
+	
+	elif !is_dead:
+			
 		motion.x = clamp(motion.x, -MAXSPEED, MAXSPEED)
 		
 		motion.y += GRAVITY
@@ -57,10 +60,14 @@ func _physics_process(_delta):
 		if Input.is_action_pressed("right"):
 			motion.x += ACCEL
 			$KinematicBody2D/AnimatedSprite.play("running")
+			if !$WalkingSound.playing and $KinematicBody2D.is_on_floor():
+				$WalkingSound.play()
 			facing_right = true
 		elif Input.is_action_pressed("left"):
 			motion.x -= ACCEL
 			$KinematicBody2D/AnimatedSprite.play("running")
+			if !$WalkingSound.playing and $KinematicBody2D.is_on_floor():
+				$WalkingSound.play()
 			facing_right = false
 		else:
 			motion.x = lerp(motion.x, 0, decay_rate)
@@ -68,6 +75,7 @@ func _physics_process(_delta):
 		
 		if $KinematicBody2D.is_on_floor():
 			if Input.is_action_pressed("jump"):
+				$JumpingSound.play()
 				motion.y = -JUMPFORCE
 				
 		if motion.y < 0 and !$KinematicBody2D.is_on_floor():
@@ -85,4 +93,12 @@ func _on_GroundMonitor_body_entered(body):
 		
 func _on_GroundMonitor_area_shape_entered(_area_rid, area, _area_shape_index, _local_shape_index):
 	if area.name == "Hitbox":
-		GameState.next_scene_path = "res://Scenes/Levels/Hub.tscn"
+		$KinematicBody2D/AnimatedSprite.modulate.a = 0
+		is_dead = true
+		if !$HurtNoise.playing():
+			$HurtNoise.play()
+		
+
+
+func _on_HurtNoise_finished():
+	GameState.next_scene_path = "res://Scenes/Levels/Hub.tscn"

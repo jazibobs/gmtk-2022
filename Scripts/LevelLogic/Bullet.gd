@@ -33,6 +33,7 @@ func _on_Coundown_timeout():
 	$CanvasLayer/ColorRect.rect_position.x += 4.25
 	
 	if time_remaining <= 0:
+		$Coundown/AudioStreamPlayer.play()
 		GameState.complete_rooms[4] = true
 		GameState.next_scene_path = "res://Scenes/Levels/Hub.tscn"
 	

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Here-We-Go-Imperss-Music-Original-Mix-2021-FreeDL.mp3-148cdabcda4ebef16e3e6005733392e4.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Here-We-Go-Imperss-Music-Original-Mix-2021-FreeDL.mp3"
+dest_files=[ "res://.import/Here-We-Go-Imperss-Music-Original-Mix-2021-FreeDL.mp3-148cdabcda4ebef16e3e6005733392e4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

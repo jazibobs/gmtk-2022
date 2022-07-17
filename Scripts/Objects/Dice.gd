@@ -6,12 +6,14 @@ var dice_random_number = 0
 
 func _ready():
 	var rerolls = 20
+	rng.randomize()
 	dice_random_number = rng.randi_range(0, 5)
-
-	while GameState.active_rooms[dice_random_number] and rerolls < 0:
+	print("Next roll:", dice_random_number + 1)
+	
+	while GameState.active_rooms[dice_random_number] and rerolls > 0:
 		dice_random_number = rng.randi_range(0, 5)
 		rerolls -= 1
-		print("Next roll:", dice_random_number + 1)
+		print("Re-roll:", dice_random_number + 1)
 
 func _on_DiceTicker_timeout():
 	var dice_random_face= rng.randi_range(0, 5)

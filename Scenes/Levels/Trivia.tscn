@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Tileset/hub_tileset.tres" type="TileSet" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Assets/Sprites/Kenney_Platform/PNG/Female/Poses/female_talk.png" type="Texture" id=10]
 [ext_resource path="res://Scripts/LevelLogic/Trivia.gd" type="Script" id=11]
 [ext_resource path="res://Assets/Fonts/consola.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Assets/Audio/mixkit-quick-positive-video-game-notification-interface-265.wav" type="AudioStream" id=13]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -77,7 +78,6 @@ position = Vector2( 832, 480 )
 [node name="TalkingAnimation" type="AnimatedSprite" parent="NPC"]
 position = Vector2( 0, 520 )
 frames = SubResource( 4 )
-frame = 2
 playing = true
 flip_h = true
 
@@ -148,6 +148,9 @@ shape = SubResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GreenButton"]
+stream = ExtResource( 13 )
 
 [node name="RedButton" type="Area2D" parent="."]
 position = Vector2( 544, 562 )

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Audio/Here-We-Go-Imperss-Music-Original-Mix-2021-FreeDL.mp3" type="AudioStream" id=1]
+
+[node name="Node" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -8.0
+autoplay = true

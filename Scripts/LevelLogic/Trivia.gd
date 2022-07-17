@@ -4,6 +4,9 @@ extends Node2D
 var green_active = false
 var red_active = false
 
+
+func _ready():
+	$DiceDoor.is_open = false
 	
 
 func _on_GreenButton_body_entered(body):
@@ -14,6 +17,7 @@ func _on_GreenButton_body_entered(body):
 		$NPC/Question.text = "Nice work! You can now exit the level."
 		$NPC/AnswerGreen.text = ""
 		$NPC/AnswerRed.text = ""
+		$GreenButton/AudioStreamPlayer.play()
 		GameState.complete_rooms[3] = true
 		$DiceDoor.is_open = true
 
@@ -26,6 +30,7 @@ func _on_RedButton_body_entered(body):
 		$NPC/Question.text = "Sorry that's incorrect"
 		$NPC/AnswerGreen.text = ""
 		$NPC/AnswerRed.text = ""
+		GameState.complete_rooms[3] = false
 		$LevelEnd.start()
 
 

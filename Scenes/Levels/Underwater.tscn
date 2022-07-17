@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Tileset/water_tileset.tres" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://Objects/Enemies/StaticEnemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/LevelLogic/Underwater.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Audio/mixkit-quick-positive-video-game-notification-interface-265.wav" type="AudioStream" id=7]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -200,6 +201,10 @@ margin_right = 768.0
 margin_bottom = 1456.0
 color = Color( 0.34902, 0.639216, 0.192157, 1 )
 
+[node name="DiceDoor" parent="." instance=ExtResource( 3 )]
+position = Vector2( 544, 32 )
+is_open = true
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -480, 672 )
 
@@ -207,10 +212,6 @@ position = Vector2( -480, 672 )
 tile_set = ExtResource( 2 )
 format = 1
 tile_data = PoolIntArray( -720889, 2, 0, -589834, 2, 0, -589826, 2, 0, -655358, 3, 0, -524306, 2, 0, -524305, 3, 0, -589816, 3, 0, -458758, 2, 0, -524276, 3, 0, -524273, 2, 0, -393229, 2, 0, -393217, 2, 0, -458747, 2, 0, -327688, 3, 0, -393206, 2, 0, -262154, 2, 0, -196618, 1610612740, 0, -196617, 1610612737, 0, -196616, 1610612737, 0, -196615, 1610612737, 0, -196614, 1610612737, 0, -196613, 1610612737, 0, -196612, 1610612737, 0, -196611, 1610612737, 0, -196610, 1610612737, 0, -196609, 1610612737, 0, -262144, 1610612737, 0, -262143, 1610612737, 0, -262142, 1610612737, 0, -262141, 1610612737, 0, -262140, 1610612737, 0, -262139, 1610612737, 0, -262138, 1610612737, 0, -262137, 1610612737, 0, -262136, 1610612737, 0, -262135, 1610612737, 0, -262134, 1610612737, 0, -262133, -1073741820, 0, -262127, 2, 0, -131089, 2, 0, -131085, 3, 0, -131082, -1610612735, 0, -196597, -1073741823, 0, -196595, 2, 0, -196592, 3, 0, -65546, -1610612735, 0, -131061, -1073741823, 0, -10, -1610612735, 0, -65525, -1073741823, 0, 65523, 2, 0, 65526, -1610612735, 0, 11, -1073741823, 0, 16, 2, 0, 131062, -1610612735, 0, 65547, -1073741823, 0, 196591, 2, 0, 196598, -1610612735, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, 131082, 1, 0, 131083, -1073741823, 0, 262128, 3, 0, 262134, -1610612735, 0, 196619, -1073741823, 0, 196621, 3, 0, 196626, 2, 0, 327670, -1610612735, 0, 262155, -1073741823, 0, 393201, 2, 0, 393206, -1610612735, 0, 327691, -1073741823, 0, 458734, 3, 0, 458742, -1610612735, 0, 393227, -1073741823, 0, 393229, 2, 0, 524278, -1610612735, 0, 458763, -1073741823, 0, 458766, 3, 0, 589814, -1610612735, 0, 524299, -1073741823, 0, 655350, -1610612735, 0, 589835, -1073741823, 0, 720882, 3, 0, 720886, -1610612735, 0, 655371, -1073741823, 0, 786422, -1610612735, 0, 720907, -1073741823, 0, 851958, -1610612732, 0, 851959, 1, 0, 851960, 1, 0, 851961, 1, 0, 851962, 1, 0, 851963, 1, 0, 851964, 1, 0, 851965, 1, 0, 851966, 1, 0, 851967, 1, 0, 786432, 1, 0, 786433, 1, 0, 786434, 1, 0, 786435, 1, 0, 786436, 1, 0, 786437, 1, 0, 786438, 1, 0, 786439, 1, 0, 786440, 1, 0, 786441, 1, 0, 786442, 1, 0, 786443, 4, 0, 786451, 3, 0, 917489, 2, 0, 983028, 3, 0, 983033, 2, 0, 917507, 2, 0, 917517, 2, 0, 1048565, 0, 0, 1048566, 3, 0, 983040, 2, 0, 1179638, 2, 0, 1114116, 2, 0, 1114121, 2, 0, 1179665, 2, 0, 1310703, 2, 0, 1310704, 2, 0, 1245197, 2, 0 )
-
-[node name="DiceDoor" parent="." instance=ExtResource( 3 )]
-position = Vector2( 544, 32 )
-is_open = true
 
 [node name="Water" type="Sprite" parent="."]
 material = SubResource( 2 )
@@ -227,5 +228,8 @@ position = Vector2( 544, 32 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinArea"]
 position = Vector2( 0, 4 )
 shape = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WinArea"]
+stream = ExtResource( 7 )
 
 [connection signal="body_entered" from="WinArea" to="." method="_on_WinArea_body_entered"]
