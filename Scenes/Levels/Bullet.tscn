@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Tileset/fire_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Scripts/LevelLogic/Bullet.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Audio/mixkit-quick-positive-video-game-notification-interface-265.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Audio/mixkit-player-losing-or-failing-2042.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1472, 264 )
@@ -15,7 +16,7 @@ script = ExtResource( 3 )
 margin_left = -1040.0
 margin_top = -392.0
 margin_right = 2048.0
-margin_bottom = 1432.0
+margin_bottom = 5680.0
 color = Color( 0.760784, 0.760784, 0.72549, 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -46,6 +47,9 @@ position = Vector2( -1, 0 )
 position = Vector2( 576, 1160 )
 shape = SubResource( 1 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DeathZone"]
+stream = ExtResource( 5 )
+
 [node name="Coundown" type="Timer" parent="."]
 wait_time = 0.05
 autostart = true
@@ -54,4 +58,5 @@ autostart = true
 stream = ExtResource( 4 )
 
 [connection signal="body_entered" from="DeathZone" to="." method="_on_DeathZone_body_entered"]
+[connection signal="finished" from="DeathZone/AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
 [connection signal="timeout" from="Coundown" to="." method="_on_Coundown_timeout"]

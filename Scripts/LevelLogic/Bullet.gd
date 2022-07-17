@@ -25,7 +25,7 @@ func _physics_process(delta):
 		enemy.position.x -= 150 * delta
 
 func _on_DeathZone_body_entered(_body):
-	GameState.next_scene_path = "res://Scenes/Levels/Hub.tscn"
+	$DeathZone/AudioStreamPlayer.play()
 
 
 func _on_Coundown_timeout():
@@ -38,3 +38,7 @@ func _on_Coundown_timeout():
 		GameState.next_scene_path = "res://Scenes/Levels/Hub.tscn"
 	
 	
+
+
+func _on_AudioStreamPlayer_finished():
+	GameState.next_scene_path = "res://Scenes/Levels/Hub.tscn"
