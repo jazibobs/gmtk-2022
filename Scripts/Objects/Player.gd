@@ -83,6 +83,6 @@ func _on_GroundMonitor_body_entered(body):
 	if body.name == "IceMap":
 		decay_rate = 0.05
 		
-func _on_GroundMonitor_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+func _on_GroundMonitor_area_shape_entered(_area_rid, area, _area_shape_index, _local_shape_index):
 	if area.name == "Hitbox":
 		GameState.next_scene_path = "res://Scenes/Levels/Hub.tscn"

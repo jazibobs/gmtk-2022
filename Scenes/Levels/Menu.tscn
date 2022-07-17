@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Fonts/consola.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/Objects/Menu.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/Kenney_Abstract_Platformer/PNG/Backgrounds/set2_background.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Kenney_Abstract_Platformer/PNG/Backgrounds/set2_hills.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Kenney_Boardgame/Spritesheets/diceWhite.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -18,21 +21,38 @@ script = ExtResource( 2 )
 margin_right = 1280.0
 margin_bottom = 720.0
 
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 640, 360 )
+scale = Vector2( 2, 1.5 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 640, 392 )
+scale = Vector2( 2, 1.36667 )
+texture = ExtResource( 4 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.141176 )
+position = Vector2( 704, 248 )
+rotation = 0.122173
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
 [node name="Label" type="Label" parent="."]
 margin_left = 192.0
-margin_top = 192.0
+margin_top = 194.0
 margin_right = 1088.0
-margin_bottom = 320.0
+margin_bottom = 322.0
 custom_fonts/font = SubResource( 1 )
-text = "Six rooms"
+text = "Roll of six"
 align = 1
 valign = 1
 
 [node name="StartButton" type="Button" parent="."]
 margin_left = 128.0
-margin_top = 384.0
+margin_top = 448.0
 margin_right = 448.0
-margin_bottom = 512.0
+margin_bottom = 576.0
 
 [node name="Label2" type="Label" parent="StartButton"]
 margin_right = 320.0
@@ -42,25 +62,11 @@ text = "start"
 align = 1
 valign = 1
 
-[node name="Credits" type="Button" parent="."]
-margin_left = 480.0
-margin_top = 384.0
-margin_right = 800.0
-margin_bottom = 512.0
-
-[node name="Label2" type="Label" parent="Credits"]
-margin_right = 320.0
-margin_bottom = 128.0
-custom_fonts/font = SubResource( 1 )
-text = "credits"
-align = 1
-valign = 1
-
 [node name="QuitButton" type="Button" parent="."]
 margin_left = 832.0
-margin_top = 384.0
+margin_top = 448.0
 margin_right = 1149.0
-margin_bottom = 512.0
+margin_bottom = 576.0
 
 [node name="Label2" type="Label" parent="QuitButton"]
 margin_right = 320.0
@@ -71,5 +77,4 @@ align = 1
 valign = 1
 
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
-[connection signal="pressed" from="Credits" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]

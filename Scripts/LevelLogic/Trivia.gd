@@ -4,9 +4,7 @@ extends Node2D
 var green_active = false
 var red_active = false
 
-
-func _ready():
-	GameState.complete_rooms[3] = true
+	
 
 func _on_GreenButton_body_entered(body):
 	if !body.is_on_floor() and !green_active and !red_active:
@@ -16,6 +14,7 @@ func _on_GreenButton_body_entered(body):
 		$NPC/Question.text = "Nice work! You can now exit the level."
 		$NPC/AnswerGreen.text = ""
 		$NPC/AnswerRed.text = ""
+		GameState.complete_rooms[3] = true
 		$DiceDoor.is_open = true
 
 
@@ -28,7 +27,6 @@ func _on_RedButton_body_entered(body):
 		$NPC/AnswerGreen.text = ""
 		$NPC/AnswerRed.text = ""
 		$LevelEnd.start()
-		GameState.complete_rooms[3] = false
 
 
 func _on_LevelEnd_timeout():

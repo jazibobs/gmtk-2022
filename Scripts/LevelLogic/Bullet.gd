@@ -19,13 +19,12 @@ func _ready():
 
 func _physics_process(delta):
 	for enemy in $EnemySpawn.get_children():
-		enemy.position.x += 3
+		enemy.position.x += 250 * delta
 	
 	for enemy in $EnemySpawn2.get_children():
-		enemy.position.x -= 2
+		enemy.position.x -= 150 * delta
 
-func _on_DeathZone_body_entered(body):
-	GameState.complete_rooms[4] = false
+func _on_DeathZone_body_entered(_body):
 	GameState.next_scene_path = "res://Scenes/Levels/Hub.tscn"
 
 

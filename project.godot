@@ -20,6 +20,11 @@ config/icon="res://icon.png"
 
 GameState="*res://Scripts/GameState.gd"
 
+[debug]
+
+settings/stdout/print_fps=true
+settings/stdout/verbose_stdout=true
+
 [display]
 
 window/size/width=1280
