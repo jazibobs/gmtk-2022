@@ -1,9 +1,19 @@
 extends Node
 
-# Called when the node enters the scene tree for the first time.
+
+onready var current_scene = load("res://Scenes/Levels/Menu.tscn").instance()
+
 func _ready():
-	var current_scene = load("res://Scenes/Levels/Menu.tscn").instance()
 	$CurrentScene.add_child(current_scene)
 
 func _process(_delta):
-	$UILayer/HeartUI.frame = GameState.current_health
+	if current_scene.filename != GameState.next_scene_path:
+		change_scene(GameState.next_scene_path)
+
+
+func change_scene(scene_path):
+	print("Scene change to:", scene_path)
+	var new_scene = load(scene_path).instance()
+	$CurrentScene.remove_child(current_scene)
+	$CurrentScene.add_child(new_scene)
+	current_scene = new_scene

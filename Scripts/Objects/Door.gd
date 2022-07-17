@@ -5,7 +5,7 @@ export (bool) var is_open = false
 
 var can_enter = false
 var door_unlocked = false
-var level_instance
+var level_path
 
 
 func _ready():
@@ -24,22 +24,21 @@ func _process(_delta):
 	
 	if can_enter and Input.is_action_pressed("enter_door"):
 		if level_number == 0:
-			level_instance = load("res://Scenes/Levels/Hub.tscn").instance()
+			level_path = "res://Scenes/Levels/Hub.tscn"
 		elif level_number == 1:
-			level_instance = load("res://Scenes/Levels/Fire.tscn").instance()
+			level_path = "res://Scenes/Levels/Fire.tscn"
 		elif level_number == 2:
-			level_instance = load("res://Scenes/Levels/Ice.tscn").instance()
+			level_path = "res://Scenes/Levels/Ice.tscn"
 		elif level_number == 3:
-			level_instance = load("res://Scenes/Levels/Underwater.tscn").instance()
+			level_path = "res://Scenes/Levels/Underwater.tscn"
 		elif level_number == 4:
-			level_instance = load("res://Scenes/Levels/Trivia.tscn").instance()
+			level_path = "res://Scenes/Levels/Trivia.tscn"
 		elif level_number == 5:
-			level_instance = load("res://Scenes/Levels/Bullet.tscn").instance()
+			level_path = "res://Scenes/Levels/Bullet.tscn"
 		elif level_number == 6:
-			level_instance = load("res://Scenes/Levels/Serenity.tscn").instance()
+			level_path = "res://Scenes/Levels/Serenity.tscn"
 		
-		get_parent().get_parent().add_child(level_instance)
-		get_parent().get_parent().remove_child(self.get_parent())
+		GameState.next_scene_path = level_path
 
 
 func _on_Area2D_body_entered(body):

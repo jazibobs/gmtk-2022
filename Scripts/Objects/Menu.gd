@@ -10,7 +10,8 @@ func _on_QuitButton_pressed():
 
 
 func _on_StartButton_pressed():
-	var hub_instance = load("res://Scenes/Levels/Hub.tscn").instance()
 	GameState.timer_active = true
-	get_parent().add_child(hub_instance)
-	get_parent().remove_child(self)
+	# var hub_instance = load("res://Scenes/Levels/Hub.tscn").instance()
+	# get_parent().add_child(hub_instance)
+	# get_parent().remove_child(self)
+	GameState.next_scene_path = "res://Scenes/Levels/Hub.tscn"
