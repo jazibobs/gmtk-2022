@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Tileset/fire_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Objects/Utilities/Door.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/LevelLogic/Fire.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3296, 264 )
 
 [node name="FireLevel" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
@@ -17,3 +22,11 @@ is_open = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 59, 484 )
+
+[node name="DeathZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2( 2720, 1160 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="DeathZone" to="." method="_on_DeathZone_body_entered"]

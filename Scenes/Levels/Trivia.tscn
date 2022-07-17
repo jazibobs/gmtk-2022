@@ -77,6 +77,7 @@ position = Vector2( 832, 480 )
 [node name="TalkingAnimation" type="AnimatedSprite" parent="NPC"]
 position = Vector2( 0, 520 )
 frames = SubResource( 4 )
+frame = 1
 playing = true
 flip_h = true
 
@@ -116,7 +117,7 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="AnswerGreen2" type="Label" parent="NPC"]
+[node name="AnswerRed" type="Label" parent="NPC"]
 margin_left = 168.0
 margin_top = 304.0
 margin_right = 432.0
@@ -165,5 +166,10 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="LevelEnd" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="GreenButton" to="." method="_on_GreenButton_body_entered"]
 [connection signal="body_entered" from="RedButton" to="." method="_on_RedButton_body_entered"]
+[connection signal="timeout" from="LevelEnd" to="." method="_on_LevelEnd_timeout"]
