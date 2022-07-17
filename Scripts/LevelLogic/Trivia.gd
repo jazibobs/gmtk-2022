@@ -5,8 +5,11 @@ var green_active = false
 var red_active = false
 
 
+func _ready():
+	GameState.complete_rooms[3] = true
+
 func _on_GreenButton_body_entered(body):
-	if !body.is_on_floor() and !green_active:
+	if !body.is_on_floor() and !green_active and !red_active:
 		green_active = true
 		$GreenButton/AnimatedSprite.frame = 1
 		$GreenButton/AnimatedSprite.translate(Vector2(0, 7))
@@ -17,7 +20,7 @@ func _on_GreenButton_body_entered(body):
 
 
 func _on_RedButton_body_entered(body):
-	if !body.is_on_floor()and !red_active:
+	if !body.is_on_floor()and !red_active and !green_active:
 		red_active = true
 		$RedButton/AnimatedSprite.frame = 1
 		$RedButton/AnimatedSprite.translate(Vector2(0, 7))
@@ -25,8 +28,8 @@ func _on_RedButton_body_entered(body):
 		$NPC/AnswerGreen.text = ""
 		$NPC/AnswerRed.text = ""
 		$LevelEnd.start()
+		GameState.complete_rooms[3] = false
 
 
 func _on_LevelEnd_timeout():
-	GameState.active_rooms[3] = false
 	GameState.next_scene_path = "res://Scenes/Levels/Hub.tscn"

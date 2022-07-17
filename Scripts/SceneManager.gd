@@ -9,7 +9,12 @@ func _ready():
 func _process(_delta):
 	if current_scene.filename != GameState.next_scene_path:
 		change_scene(GameState.next_scene_path)
-
+	
+	for x in range (0, 6):
+		get_node("UILayer/CompletedRooms/Room" + str(x+1)).modulate.a = 0.5
+		
+		if GameState.complete_rooms[x]:
+			get_node("UILayer/CompletedRooms/Room" + str(x+1)).modulate.a = 1
 
 func change_scene(scene_path):
 	print("Scene change to:", scene_path)
