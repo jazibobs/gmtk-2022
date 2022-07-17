@@ -1,16 +1,6 @@
 extends Node
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+var timer_active = false
+var active_rooms = [true, true, false, false, false, false]
+var current_health = 3
+var show_player_ui = false

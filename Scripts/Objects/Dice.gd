@@ -20,5 +20,5 @@ func _on_Area2D_body_entered(body):
 		$StaticBody2D/AnimatedSprite.stop()
 		
 		# Unlock door (sibling node)
-		get_parent().get_node("DiceDoor" + str(dice_random_number + 1)).is_open = true
+		GameState.active_rooms[dice_random_number] = true
 	
