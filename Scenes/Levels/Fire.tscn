@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Tileset/fire_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Objects/Utilities/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/LevelLogic/Fire.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Audio/mixkit-quick-positive-video-game-notification-interface-265.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Audio/mixkit-player-losing-or-failing-2042.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3296, 264 )
@@ -14,6 +15,12 @@ extents = Vector2( 56, 92 )
 
 [node name="FireLevel" type="Node2D"]
 script = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -968.0
+margin_right = 7016.0
+margin_bottom = 4200.0
+color = Color( 0.290196, 0.211765, 0.196078, 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
@@ -33,6 +40,9 @@ position = Vector2( 59, 484 )
 position = Vector2( 2720, 1160 )
 shape = SubResource( 1 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DeathZone"]
+stream = ExtResource( 6 )
+
 [node name="WinArea" type="Area2D" parent="."]
 position = Vector2( 5888, 672 )
 
@@ -47,4 +57,5 @@ __meta__ = {
 stream = ExtResource( 5 )
 
 [connection signal="body_entered" from="DeathZone" to="." method="_on_DeathZone_body_entered"]
+[connection signal="finished" from="DeathZone/AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
 [connection signal="body_entered" from="WinArea" to="." method="_on_WinArea_body_entered"]

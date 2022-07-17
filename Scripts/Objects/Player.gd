@@ -95,7 +95,7 @@ func _on_GroundMonitor_area_shape_entered(_area_rid, area, _area_shape_index, _l
 	if area.name == "Hitbox":
 		$KinematicBody2D/AnimatedSprite.modulate.a = 0
 		is_dead = true
-		if !$HurtNoise.playing():
+		if !$HurtNoise.playing:
 			$HurtNoise.play()
 		
 
